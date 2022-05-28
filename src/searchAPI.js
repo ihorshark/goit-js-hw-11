@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { Notify } from 'notiflix';
 
 export default class SearchAPIService {
   constructor() {
     this.searchQuery = '';
   }
 
-  fetchPictures() {
+  fetchPictures(pageNum) {
     const BASE_URL = 'https://pixabay.com/api/';
 
     const options = {
@@ -16,6 +15,8 @@ export default class SearchAPIService {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: 'true',
+        page: pageNum,
+        per_page: 40,
       },
     };
 
